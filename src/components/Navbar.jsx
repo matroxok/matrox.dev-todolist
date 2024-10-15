@@ -1,7 +1,9 @@
+import React, { useState } from 'react'
+import { format, addDays, subDays } from 'date-fns'
+import { pl } from 'date-fns/locale'
 import WidgetsIcon from '@mui/icons-material/Widgets'
 import NotificationsActiveIcon from '@mui/icons-material/NotificationsActive'
 import CalendarMonthIcon from '@mui/icons-material/CalendarMonth'
-import { CalendarBox } from './CalendarBox'
 
 const Navbar = () => {
 	return (
@@ -17,14 +19,38 @@ const Navbar = () => {
 	)
 }
 
+const polishMonths = {
+	stycznia: 'Styczeń',
+	lutego: 'Luty',
+	marca: 'Marzec',
+	kwietnia: 'Kwiecień',
+	maja: 'Maj',
+	czerwca: 'Czerwiec',
+	lipca: 'Lipiec',
+	sierpnia: 'Sierpień',
+	września: 'Wrzesień',
+	października: 'Październik',
+	listopada: 'Listopad',
+	grudnia: 'Grudzień',
+}
+
 export const DateBox = () => {
+	const [currentDate] = useState(new Date())
+
+	const renderCurrentMonth = () => {
+		const formattedDate = format(currentDate, 'MMMM yyyy', { locale: pl })
+		const [month, year] = formattedDate.split(' ')
+		const correctedMonth = polishMonths[month || month]
+		return `${correctedMonth} ${year}`
+	}
+
 	return (
 		<div className="w-screen h-60 bg-navbar mt-2 flex flex-col items-center">
 			<p className="flex items-center justify-center gap-2 text-xl mt-5">
 				<CalendarMonthIcon fontSize="medium"></CalendarMonthIcon>
-				{renderMonth()}
+				{renderCurrentMonth()}
 			</p>
-			<CalendarBox></CalendarBox>
+			{/* <CalendarBox></CalendarBox> */}
 		</div>
 	)
 }

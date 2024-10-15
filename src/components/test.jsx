@@ -5,6 +5,7 @@ import { monthsInYear } from 'date-fns/constants'
 export const DateCarousel = () => {
 	// Ustawienia dla dzisiejszej daty jako początkowej
 	const [currentDate, currnetMonth, setCurrentDate] = useState(new Date())
+	clg
 
 	// Funkcja do zmiany daty na wcześniejszą
 	const handlePrevious = () => {
