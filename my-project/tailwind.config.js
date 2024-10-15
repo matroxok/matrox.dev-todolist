@@ -21,6 +21,7 @@ export default {
 		},
 		colors: {
 			navbar: '#232229',
+			white: ' rgb(255 255 255)',
 		},
 	},
 	plugins: [],
